@@ -9,201 +9,198 @@
     
 </head>
 <body>
-    <nav class="w-full sticky top-0 z-50 bg-white-900 ">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="assets/logo.png" alt="Logo" class="w-16 h-16 rounded-full">
-                <span class="font-bold text-lg text-[#013223]">Emergency<br>Service</span>
-            </div>
-            <div class="flex items-center gap-5">
-                <div class="flex items-center space-x-1 bg-cyan-100 px-6 py-1 rounded-full shadow">
-                    <span class="font-semibold text-gray-900">0</span>
-                    <img src="assets/heart.png" alt="" class="w-10 h-10">
-                   
-                </div>
-                <div class="flex items-center space-x-1 bg-cyan-100 px-6 py-1 rounded-full shadow">
-                   <span class="coinCount">100</span>
-                    <img src="assets/coin.png" alt="" class="w-10 h-10">
-                    
-                </div>
-                <div class="bg-[#00A63E] hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-full shadow">
-                    <span class="copyCount">0</span>
-                    <button class="">Copy</button>
-                   
-                </div>
-            </div>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practices Work</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <!--  Navbar -->
+  <nav class="w-full sticky top-0 z-50 bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Logo" class="w-12 h-12 rounded-full">
+        <span class="font-bold text-lg text-[#013223]">Emergency<br>Service</span>
+      </div>
+      <!-- Counters -->
+      <div class="flex items-center gap-5">
+        <div class="flex items-center space-x-1 bg-cyan-100 px-4 py-1 rounded-full shadow">
+          <span id="heartCount" class="font-semibold text-gray-900">0</span>
+          <span class="text-red-500 text-xl">💗</span>
         </div>
-    </nav>
-    <header class="bg-[#013223] text-center py-10 text-white">
-        <img src="assets/logo.png" alt="Bangladesh Logo" class="mx-auto w-16 h-16 mb-4">
-        <h1 class="text-3xl font-bold">Emergency Service Directory</h1>
-        <p class="mt-2 text-sm">Government Emergency Services at Your Fingertip - A Project by  Government of the People's Republic of Bangladesh</p>
-    </header>
-    <!-- Main Section -->
-<main class="max-w-7xl mx-auto px-4 md:px-6 py-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
-<!-- Cards -->
-<section class="lg:col-span-3">
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsContainer"></div>
-</section>
+        <div class="flex items-center space-x-1 bg-cyan-100 px-4 py-1 rounded-full shadow">
+          <span id="coinCount">100</span>
+          <span class="w-8 h-8"><img src="assets/coin.png" alt=""></span>
+        </div>
+        <div class="bg-[#00A63E] hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-full shadow flex items-center gap-2">
+          <span id="copyCount">0</span>
+          <span> Copy</span>
+        </div>
+      </div>
+    </div>
+  </nav>
 
+  <!--  Hero Section -->
+  <header class="bg-gradient-to-r from-green-900 to-green-900 text-center py-10 text-white">
+    <img src="assets/logo.png" alt="Bangladesh Logo" class="mx-auto w-16 h-16 mb-4">
+    <h1 class="text-3xl font-bold">Emergency Service Directory</h1>
+    <p class="mt-2 text-sm">Government Emergency Services at Your Fingertip - A Project by Government of Bangladesh</p>
+  </header>
 
-<!-- History -->
-<aside class="lg:col-span-1">
-<div class="bg-green-50 rounded-lg border border-green-200">
-<div class="flex justify-between items-center px-4 py-3 border-b border-green-200">
-<h3 class="font-semibold flex items-center gap-2">📞 Call History</h3>
-<button id="clearHistory" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Clear</button>
-</div>
-<ul id="historyList" class="divide-y max-h-[500px] overflow-auto"></ul>
-<div id="emptyHistory" class="p-4 text-sm text-slate-500">No calls yet.</div>
-</div>
-</aside>
-</main>
+  <!--  Main Section -->
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 grid grid-cols-1 lg:grid-cols-4 gap-6">
 
+    <!-- Cards Section -->
+    <section class="lg:col-span-3">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsContainer"></div>
+    </section>
 
-<!-- Templates -->
-<template id="cardTemplate">
-<div class="bg-white border rounded-lg p-4 shadow flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between mb-2">
-<div>
-<h4 class="font-semibold service-name">Service Name</h4>
-<p class="text-sm text-slate-500 service-name-en">English Name</p>
-</div>
-<button class="heart-btn" title="Favorite">♡</button>
-</div>
-<p class="font-bold text-xl service-number">000</p>
-<p class="text-xs text-slate-500 category">Category</p>
-</div>
-<div class="flex gap-2 mt-4">
-<button class="copy-btn flex-1 bg-slate-100 text-slate-800 rounded py-2 hover:bg-slate-200" data-number="" data-name="">Copy</button>
-<button class="call-btn flex-1 bg-green-600 text-white rounded py-2 hover:bg-green-700" data-number="" data-name="">Call</button>
-</div>
-</div>
-</template>
+    <!-- History Section -->
+    <aside class="lg:col-span-1">
+      <div class="bg-green-50 rounded-lg border border-green-200">
+        <div class="flex justify-between items-center px-4 py-3 border-b border-green-200">
+          <h3 class="font-semibold flex items-center gap-2">📞 Call History</h3>
+          <button id="clearHistory" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Clear</button>
+        </div>
+        <ul id="historyList" class="divide-y max-h-[500px] overflow-auto"></ul>
+        <div id="emptyHistory" class="p-4 text-sm text-slate-500">No calls yet.</div>
+      </div>
+    </aside>
+  </main> 
+  <!--  Templates -->
+  <template id="cardTemplate">
+    <div class="bg-white border rounded-lg p-4 shadow flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <!-- Emoji Icon -->
+          <div class="text-3xl service-icon"></div>
+          <button class="heart-btn text-red-500 text-xl" title="Favorite">♡</button>
+        </div>
+        <h4 class="font-semibold service-name">Service Name</h4>
+        <p class="text-sm text-slate-500 service-name-en">English Name</p>
+        <p class="font-bold text-xl service-number">000</p>
+        <p class="text-xs text-slate-500 category">Category</p>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button class="copy-btn flex-1 bg-slate-100 text-slate-800 rounded py-2 hover:bg-slate-200" 
+                data-number="" data-name="">📋 Copy</button>
+        <button class="call-btn flex-1 bg-green-600 text-white rounded py-2 hover:bg-green-700" 
+                data-number="" data-name="">📞 Call</button>
+      </div>
+    </div>
+  </template>
 
+  <template id="historyItemTemplate">
+    <li class="px-4 py-2 text-sm flex justify-between items-center">
+      <div>
+        <div class="font-medium history-name"></div>
+        <div class="text-xs text-slate-600 history-number"></div>
+        <div class="text-xs text-slate-500 history-time"></div>
+      </div>
+    </li>
+  </template>
 
-<template id="historyItemTemplate">
-<li class="px-4 py-2 text-sm flex justify-between items-center">
-<div>
-<div class="font-medium history-name"></div>
-<div class="text-xs text-slate-600 history-number"></div>
-<div class="text-xs text-slate-500 history-time"></div>
-</div>
-</li>
-</template>
-<script>
+    <!-- Script -->
+  <script>
     const services = [
-{ name: 'National Emergency Number', en: 'National Emergency', number: '999', category: 'All' },
-{ name: 'Police Helpline Number', en: 'Police', number: '999', category: 'Police' },
-{ name: 'Fire Service Number', en: 'Fire Service', number: '999', category: 'Fire' },
-{ name: 'Ambulance Service', en: 'Ambulance', number: '1994-999999', category: 'Health' },
-{ name: 'Women & Child Helpline', en: 'Women & Child Helpline', number: '109', category: 'Help' },
-{ name: 'Anti-Corruption Helpline', en: 'Anti-Corruption', number: '106', category: 'Govt.' },
-{ name: 'Electricity Helpline', en: 'Electricity Outage', number: '16216', category: 'Electricity' },
-{ name: 'Brac Helpline', en: 'Brac', number: '16445', category: 'NGO' },
-{ name: 'Bangladesh Railway Helpline', en: 'Bangladesh Railway', number: '163', category: 'Travel' },
-];
+      { name: 'National Emergency Number', en: 'National Emergency', number: '999', category: 'All', icon: '🚨' },
+      { name: 'Police Helpline Number', en: 'Police', number: '999', category: 'Police', icon: '🚓' },
+      { name: 'Fire Service Number', en: 'Fire Service', number: '999', category: 'Fire', icon: '🚒' },
+      { name: 'Ambulance Service', en: 'Ambulance', number: '1994-999999', category: 'Health', icon: '🚑' },
+      { name: 'Women & Child Helpline', en: 'Women & Child Helpline', number: '109', category: 'Help', icon: '👩‍👧' },
+      { name: 'Anti-Corruption Helpline', en: 'Anti-Corruption', number: '106', category: 'Govt.', icon: '⚖️' },
+      { name: 'Electricity Helpline', en: 'Electricity Outage', number: '16216', category: 'Electricity', icon: '⚡' },
+      { name: 'Brac Helpline', en: 'Brac', number: '16445', category: 'NGO', icon: '🏢' },
+      { name: 'Bangladesh Railway Helpline', en: 'Bangladesh Railway', number: '163', category: 'Travel', icon: '🚂' },
+    ];
 
+    const state = { hearts: 0, coins: 100, copies: 0, history: [] };
+    const el = (s, p=document) => p.querySelector(s);
 
-const state = { hearts: 0, coins: 100, copies: 0, history: [] };
+    function updateNavbar(){
+      el('#heartCount').textContent = state.hearts;
+      el('#coinCount').textContent = state.coins;
+      el('#copyCount').textContent = state.copies;
+    }
 
+    function formatTime(){
+      return new Intl.DateTimeFormat(undefined, {
+        hour:'2-digit',minute:'2-digit',second:'2-digit'
+      }).format(new Date());
+    }
+     function renderCards(){
+      const container = el('#cardsContainer');
+      const tpl = el('#cardTemplate');
+      container.innerHTML = '';
+      services.forEach(svc => {
+        const node = tpl.content.cloneNode(true);
+        node.querySelector('.service-name').textContent = svc.name;
+        node.querySelector('.service-name-en').textContent = svc.en;
+        node.querySelector('.service-number').textContent = svc.number;
+        node.querySelector('.category').textContent = svc.category;
+        node.querySelector('.service-icon').textContent = svc.icon;
+        node.querySelector('.copy-btn').dataset.number = svc.number;
+        node.querySelector('.copy-btn').dataset.name = svc.name;
+        node.querySelector('.call-btn').dataset.number = svc.number;
+        node.querySelector('.call-btn').dataset.name = svc.name;
+        container.appendChild(node);
+      });
+    }
 
-const el = (s, p=document) => p.querySelector(s);
+    function renderHistory(){
+      const list = el('#historyList');
+      const empty = el('#emptyHistory');
+      list.innerHTML = '';
+      if(state.history.length === 0){ 
+        empty.classList.remove('hidden'); 
+        return; 
+      }
+      empty.classList.add('hidden');
+      const tpl = el('#historyItemTemplate');
+      state.history.forEach(item => {
+        const node = tpl.content.cloneNode(true);
+        node.querySelector('.history-name').textContent = item.name;
+        node.querySelector('.history-number').textContent = item.number;
+        node.querySelector('.history-time').textContent = item.time;
+        list.appendChild(node);
+      });
+    }
 
-function updateNavbar(){
-el('#heartCount').textContent = state.hearts;
-el('#coinCount').textContent = state.coins;
-el('#copyCount').textContent = state.copies;
-}
+    document.addEventListener('click', async e=>{
+      if(e.target.closest('.heart-btn')){
+        state.hearts++; updateNavbar();
+      }
+      if(e.target.closest('.copy-btn')){
+        const btn = e.target.closest('.copy-btn');
+        await navigator.clipboard.writeText(btn.dataset.number);
+        state.copies++; updateNavbar();
+        alert(`Copied ${btn.dataset.name} (${btn.dataset.number})`);
+      }
+      if(e.target.closest('.call-btn')){
+        const btn = e.target.closest('.call-btn');
+        if(state.coins < 20){ alert('Not enough coins!'); return; }
+        state.coins -= 20; updateNavbar();
+        alert(`Calling ${btn.dataset.name} — ${btn.dataset.number}`);
+        state.history.unshift({
+          name: btn.dataset.name,
+          number: btn.dataset.number,
+          time: formatTime()
+        });
+        renderHistory();
+      }
+    });
 
+    el('#clearHistory').addEventListener('click', ()=>{
+      state.history=[]; renderHistory();
+    });
 
-function formatTime(){
-return new Intl.DateTimeFormat(undefined, {hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(new Date());
-}
-
-
-function renderCards(){
-const container = el('#cardsContainer');
-const tpl = el('#cardTemplate');
-container.innerHTML = '';
-services.forEach(svc => {
-const node = tpl.content.cloneNode(true);
-node.querySelector('.service-name').textContent = svc.name;
-node.querySelector('.service-name-en').textContent = svc.en;
-node.querySelector('.service-number').textContent = svc.number;
-node.querySelector('.category').textContent = svc.category;
-node.querySelector('.copy-btn').dataset.number = svc.number;
-node.querySelector('.copy-btn').dataset.name = svc.name;
-node.querySelector('.call-btn').dataset.number = svc.number;
-node.querySelector('.call-btn').dataset.name = svc.name;
-container.appendChild(node);
-});
-}
-function renderHistory(){
-const list = el('#historyList');
-const empty = el('#emptyHistory');
-list.innerHTML = '';
-if(state.history.length===0){ empty.classList.remove('hidden'); return; }
-empty.classList.add('hidden');
-const tpl = el('#historyItemTemplate');
-state.history.forEach(item=>{
-const node = tpl.content.cloneNode(true);
-node.querySelector('.history-name').textContent = item.name;
-node.querySelector('.history-number').textContent = item.number;
-node.querySelector('.history-time').textContent = item.time;
-list.appendChild(node);
-});
-}
-
-
-document.addEventListener('click', async e=>{
-if(e.target.closest('.heart-btn')){
-state.hearts++; updateNavbar();
-}
-if(e.target.closest('.copy-btn')){
-const btn = e.target.closest('.copy-btn');
-await navigator.clipboard.writeText(btn.dataset.number);
-state.copies++; updateNavbar();
-alert(`Copied ${btn.dataset.name} (${btn.dataset.number})`);
-}
-if(e.target.closest('.call-btn')){
-const btn = e.target.closest('.call-btn');
-if(state.coins<20){alert('Not enough coins!');return;}
-state.coins-=20; updateNavbar();
-alert(`Calling ${btn.dataset.name} — ${btn.dataset.number}`);
-state.history.unshift({name:btn.dataset.name,number:btn.dataset.number,time:formatTime()});
-renderHistory();
-}
-});
-
-
-el('#clearHistory').addEventListener('click',()=>{state.history=[];renderHistory();});
-
-
-renderCards();
-renderHistory();
-updateNavbar();
-</script>
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
+    renderCards();
+    renderHistory();
+    updateNavbar();
+  </script>
 </body>
 </html>
